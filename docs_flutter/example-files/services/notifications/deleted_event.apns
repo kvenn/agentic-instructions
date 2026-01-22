@@ -1,0 +1,18 @@
+{
+  "Simulator Target Bundle": "app.vennco.sesh",
+  "aps": {
+    "alert": {
+      "title": "New Soccer event",
+      "body": "Tuesday, June 15 at 7:00 PM – Central Park"
+    },
+    "sound": "default"
+  },
+
+  "### Tells flutter to handle this": "",
+  "gcm.message_id": "123",
+
+  "type": "new_event",
+  "eventId": "13b41d89-a970-48fb-9937-1774216f21d9",
+  "groupId": "9546fd8e-e6f3-480e-b001-6defe1ea07e4",
+  "startTime": "2025-06-15T19:00:00.000Z",
+}
