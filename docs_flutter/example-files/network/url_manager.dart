@@ -24,7 +24,7 @@ class NetworkUrlManager implements UrlManager {
       ? 'http://10.0.2.2:8000'
       : 'http://$_localHost:8080';
   static const _webStagingUrl = 'http://$_localHost:8080';
-  static const _webProdUrl = 'https://sesh-api.secretbutthole.com';
+  static const _webProdUrl = 'https://api.example.com';
   static const _debugServerUrl = 'http://$_localHost:4000';
 
   static final _localSocketUrl = !kIsWeb && Platform.isAndroid

@@ -52,4 +52,8 @@ Some of these can be moved into general.
 ### TODO - other stuff
 
 - Include docs on workflow (AI authors first one-shot pass, have codex and copilot review the PR, then I review the reviewed PR)
+  - I select which model I use based on [this](https://artificialanalysis.ai/models?models=gpt-5-mini,o3,gpt-5-2,gpt-5-1-codex,gpt-5-2-codex,gpt-5-2-medium,claude-4-5-sonnet-thinking,claude-4-5-haiku-reasoning,claude-opus-4-5,claude-4-5-sonnet,claude-opus-4-5-thinking,gpt-5-1,gpt-5,gpt-5-minimal,o3-pro,o4-mini,gpt-5-medium,gpt-5-low,gpt-5-codex,claude-4-sonnet-thinking,claude-3-7-sonnet,claude-4-1-opus,claude-4-opus,claude-4-opus-thinking,claude-4-1-opus-thinking,claude-3-7-sonnet-thinking,claude-4-sonnet&intelligence-comparison=intelligence-vs-price)
+    - Specifically looking at "**Intelligence Index Comparisons**"
 - Include scripts and git commands I use regularly in all projects
+  - `git create-private-here`
+  - `git pr-review #`
