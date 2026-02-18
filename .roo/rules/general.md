@@ -27,4 +27,4 @@ Use the following rules for any code project
   - Manager: Manages or holds state in memory
 - Use the latest and most modern functionality of the language or framework
   - If you see an API you'd like to use below but do not know how, use context7 mcp to look up the documentation
-- Use `asdf` for dependencies. The `.tool-versions` file in the root defines the version. Create it and update it as necessary.
+- Use `mise` for dependencies. The `mise.toml` (formerly `.tool-versions`) file in the root defines the version. Create it and update it as necessary.

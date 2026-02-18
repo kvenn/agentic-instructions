@@ -26,7 +26,7 @@ This doc enforces a few key principles.
    1. Keep a log of feature specs. Useful mostly for humans, but also for making big changes to a feature
 4. Bonus
    1. Telling it other simple workflow rules, like check `/utils/` (as to not create the same thing 10 times) or do imports in the same edit as othe file changes
-   2. `asdf` - another standard across languages for pinning framework/language versions. May override with `uv` for python, etc.
+   2. `mise` - another standard across languages for pinning framework/language versions. May override with `uv` for python, etc.
 
 **`general.md`**
 

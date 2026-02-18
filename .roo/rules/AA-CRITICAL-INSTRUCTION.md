@@ -27,8 +27,8 @@ You will keep each of these updated as you work.
 - AGENT-ACTION: As you create features, thoroughly document them in the `/docs/features` folder. Keep these up to date as you edit features!
 - AGENT-ACTION: Each feature you implement get it's own doc. These should generally not include code samples, but rather highlight the core API of the feature, list the file names and their purpose (short summary), and explain how multiple pieces fit together (like a provider/use-case which connects to a service and/or repository). You can reference these docs from the README.
 
-**asdf**
+**mise**
 
-- AGENT-ACTION: Use `asdf` for new projects via a `.tool-versions` file
+- AGENT-ACTION: Use `mise` for new projects via a `mise.toml` file (convert .tool-versions to mise.toml)
 
 </CRITICAL_INSTRUCTIONS>
