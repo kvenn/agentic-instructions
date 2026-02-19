@@ -1,0 +1,209 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+readonly SCRIPT_NAME="ai-bootstrap"
+readonly PROFILE_GENERAL="general"
+readonly PROFILE_FLUTTER="flutter"
+readonly DEFAULT_PROFILE="$PROFILE_GENERAL"
+
+declare -a GENERAL_PATHS=(
+  "AGENTS.md"
+  ".gemini/styleguide.md"
+  ".roo/rules/AA-CRITICAL-INSTRUCTION.md"
+  ".roo/rules/general.md"
+)
+
+declare -a FLUTTER_PATHS=(
+  ".roo/rules/flutter.md"
+  "docs_flutter"
+)
+
+usage() {
+  cat <<'EOF'
+Usage:
+  ai-bootstrap [profile] [options]
+
+Profiles:
+  general                 Copy general instruction files (default).
+  flutter                 Copy general files plus flutter-specific files.
+
+Options:
+  -f, --force             Overwrite existing files in the target project.
+  -n, --dry-run           Show what would be copied without writing files.
+      --source <path>     Override template source directory.
+  -h, --help              Show this help text.
+
+Examples:
+  ai-bootstrap
+  ai-bootstrap flutter
+  ai-bootstrap flutter --force
+  ai-bootstrap --dry-run
+EOF
+}
+
+log_line() {
+  printf '%s\n' "$1"
+}
+
+error_exit() {
+  printf 'Error: %s\n' "$1" >&2
+  exit 1
+}
+
+# Resolve the directory of this script even when executed through a symlink.
+resolve_script_dir() {
+  local source_path="${BASH_SOURCE[0]}"
+  while [ -L "$source_path" ]; do
+    local source_dir
+    source_dir="$(cd -P "$(dirname "$source_path")" && pwd)"
+    source_path="$(readlink "$source_path")"
+    if [[ "$source_path" != /* ]]; then
+      source_path="$source_dir/$source_path"
+    fi
+  done
+
+  cd -P "$(dirname "$source_path")" && pwd
+}
+
+parse_args() {
+  PROFILE="$DEFAULT_PROFILE"
+  FORCE_OVERWRITE=0
+  DRY_RUN=0
+  SOURCE_OVERRIDE=""
+
+  local profile_set=0
+
+  while (($# > 0)); do
+    case "$1" in
+      "$PROFILE_GENERAL" | "$PROFILE_FLUTTER")
+        if ((profile_set == 1)); then
+          error_exit "Only one profile can be set per command."
+        fi
+        PROFILE="$1"
+        profile_set=1
+        ;;
+      -f | --force)
+        FORCE_OVERWRITE=1
+        ;;
+      -n | --dry-run)
+        DRY_RUN=1
+        ;;
+      --source)
+        if (($# < 2)); then
+          error_exit "--source requires a directory path."
+        fi
+        SOURCE_OVERRIDE="$2"
+        shift
+        ;;
+      -h | --help)
+        usage
+        exit 0
+        ;;
+      *)
+        error_exit "Unknown argument: $1"
+        ;;
+    esac
+    shift
+  done
+}
+
+copy_item() {
+  local relative_path="$1"
+  local source_path="$TEMPLATE_ROOT/$relative_path"
+  local target_path="$TARGET_ROOT/$relative_path"
+
+  if [[ ! -e "$source_path" ]]; then
+    log_line "missing template: $relative_path"
+    MISSING_COUNT=$((MISSING_COUNT + 1))
+    return
+  fi
+
+  if [[ -e "$target_path" && "$FORCE_OVERWRITE" -eq 0 ]]; then
+    log_line "skip    $relative_path (already exists)"
+    SKIPPED_COUNT=$((SKIPPED_COUNT + 1))
+    return
+  fi
+
+  if [[ "$DRY_RUN" -eq 1 ]]; then
+    if [[ -e "$target_path" && "$FORCE_OVERWRITE" -eq 1 ]]; then
+      log_line "would overwrite $relative_path"
+    else
+      log_line "would copy      $relative_path"
+    fi
+    COPIED_COUNT=$((COPIED_COUNT + 1))
+    return
+  fi
+
+  mkdir -p "$(dirname "$target_path")"
+
+  if [[ "$FORCE_OVERWRITE" -eq 1 && -e "$target_path" ]]; then
+    if [[ -d "$source_path" && ! -d "$target_path" ]]; then
+      rm -f "$target_path"
+    elif [[ ! -d "$source_path" && -d "$target_path" ]]; then
+      rm -rf "$target_path"
+    fi
+  fi
+
+  if [[ -d "$source_path" ]]; then
+    if [[ "$FORCE_OVERWRITE" -eq 1 && -e "$target_path" ]]; then
+      rm -rf "$target_path"
+    fi
+    cp -R "$source_path" "$target_path"
+  else
+    cp -f "$source_path" "$target_path"
+  fi
+
+  log_line "copied  $relative_path"
+  COPIED_COUNT=$((COPIED_COUNT + 1))
+}
+
+main() {
+  parse_args "$@"
+
+  local script_dir
+  script_dir="$(resolve_script_dir)"
+
+  if [[ -n "$SOURCE_OVERRIDE" ]]; then
+    if [[ ! -d "$SOURCE_OVERRIDE" ]]; then
+      error_exit "--source path does not exist: $SOURCE_OVERRIDE"
+    fi
+    TEMPLATE_ROOT="$(cd "$SOURCE_OVERRIDE" && pwd -P)"
+  else
+    TEMPLATE_ROOT="$script_dir"
+  fi
+
+  if [[ ! -f "$TEMPLATE_ROOT/AGENTS.md" ]]; then
+    error_exit "Template root does not look correct: $TEMPLATE_ROOT"
+  fi
+
+  TARGET_ROOT="$(pwd -P)"
+
+  declare -a selected_paths=("${GENERAL_PATHS[@]}")
+  if [[ "$PROFILE" == "$PROFILE_FLUTTER" ]]; then
+    selected_paths+=("${FLUTTER_PATHS[@]}")
+  fi
+
+  COPIED_COUNT=0
+  SKIPPED_COUNT=0
+  MISSING_COUNT=0
+
+  log_line "Running $SCRIPT_NAME"
+  log_line "profile: $PROFILE"
+  log_line "source:  $TEMPLATE_ROOT"
+  log_line "target:  $TARGET_ROOT"
+  log_line ""
+
+  local item
+  for item in "${selected_paths[@]}"; do
+    copy_item "$item"
+  done
+
+  log_line ""
+  log_line "summary: copied=$COPIED_COUNT skipped=$SKIPPED_COUNT missing_templates=$MISSING_COUNT"
+  if [[ "$DRY_RUN" -eq 1 ]]; then
+    log_line "dry run only: no files were written."
+  fi
+}
+
+main "$@"
