@@ -10,7 +10,7 @@ You will keep each of these updated as you work.
 **JUSTFILE**
 
 - justfile defines the commands necessary for this project (like building, running, etc).
-- AGENT-ACTION: Add new helpful commands to the justfile that will make running and testing easier. Ensure they are well documented. Create a justfile if one doesn't exist.
+- AGENT-ACTION: Add new helpful commands to the justfile that will make running and testing easier. Ensure they are well documented. Create a justfile if one doesn't exist. Include a summary of parameter options in the doc comment above the command
 
 **README**
 
