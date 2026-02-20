@@ -3,17 +3,29 @@ set dotenv-load := true
 default:
     @just --list
 
-# Copy template files into the current directory.
-bootstrap profile="general":
-    ./ai-bootstrap {{profile}}
+# Bootstrap templates into the current directory.
+# Params: *args = zero or more profile names and/or ai-bootstrap options.
+bootstrap *args:
+    ./ai-bootstrap {{args}}
 
-# Preview copy operations without writing files.
-bootstrap-dry-run profile="general":
-    ./ai-bootstrap {{profile}} --dry-run
+# Preview bootstrap operations without writing files.
+# Params: *args = zero or more profile names and/or ai-bootstrap options.
+bootstrap-dry-run *args:
+    ./ai-bootstrap --dry-run {{args}}
 
-# Overwrite files in the target directory when they already exist.
-bootstrap-force profile="general":
-    ./ai-bootstrap {{profile}} --force
+# Overwrite existing target paths when they already exist.
+# Params: *args = zero or more profile names and/or ai-bootstrap options.
+bootstrap-force *args:
+    ./ai-bootstrap --force {{args}}
+
+# Copy files instead of symlinking (symlink mode is the default).
+# Params: *args = zero or more profile names and/or ai-bootstrap options.
+bootstrap-copy *args:
+    ./ai-bootstrap --no-symlink {{args}}
+
+# Print discovered profile names based on .roo/rules and docs_<profile> folders.
+bootstrap-list-profiles:
+    ./ai-bootstrap --list-profiles
 
 # Symlink ai-bootstrap into ~/.local/bin so it can be called from anywhere.
 install-bootstrap:
