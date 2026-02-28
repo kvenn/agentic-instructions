@@ -4,7 +4,7 @@ Use the following preferences when working in a node project
 
 - Typescript with strict types
   - If working with json, create a type for it. DO NOT let `any` into the ecosystem if it can be avoided.
-- pnpm 10.11.0 - DO NOT use npm or yarn
+- pnpm 10.30.1 - DO NOT use npm or yarn
   - Run pnpm exec <command> instead of npx
 - Nodemon for local dev
 - For running typescript files, use tsx with a typecheck (like the following)

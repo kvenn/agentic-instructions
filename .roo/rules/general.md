@@ -2,6 +2,10 @@
 
 Use the following rules for any code project
 
+- Keep files small and mostly single purpose. 
+  - If a file gets over 500 lines, it should be broken up. 
+  - Leverage folders to keep these files organized (and scopes minimal, as necessary). 
+  - Try not to have them be tightly coupled (with clear dependency flow)
 - Use early return instead of nested ifs
 - Prefer using dependencies instead of building a solution yourself
 - Always pull string literals into a minimally scoped variable
