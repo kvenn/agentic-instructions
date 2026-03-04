@@ -12,10 +12,11 @@
 - **Break up large build functions** by creating separate stateless widgets.
   - If it's a widget thats only useful for this page, keep the widget in the same file and make it private
 - **Single repository** interface for all network api operations, returns `Stream`
-- **Static util classes** (e.g. `Logger`) and singletons (e.g. `CrashReporting`)
 - **Push notifications** handled by DI‐initialized `PushNotificationService`, no static calls in app code
+- **Static util classes** (e.g. `Logger`) and singletons (e.g. `CrashReporting`)
 - **Minimize services that use repos** so services could be reused across projects
 - **Minimize scope** and keep as many things private as you can
+- **IAP** Use revenue cat if there's a paid option (to simplify purchase) + write a doc with the remaining manual steps
 
 ## Architecture
 
@@ -116,20 +117,17 @@ This app follows an MVVM architecture with the following components:
 # Flutter 3.35
 
 - Web
-
   - Stateful hot reload on web: enabled by default (remove --web-experimental-hot-reload; can disable with --no-web-experimental-hot-reload).
   - Wasm dry runs: every JS build does a Wasm "dry run" to report readiness (toggle with --(no-)wasm-dry-run).
   - Roadmap: hot reload to more dev targets (e.g., -d web-server).
 
 - Framework / Accessibility
-
   - Semantics locales support for web.
   - New SemanticsLabelBuilder widget for composed announcements.
   - SliverEnsureSemantics to keep slivers in the semantics tree.
   - Backfilled semantics for CustomPainter; RTL toolbar alignment fixes; iOS/Android accessibility fixes.
 
 - Widgets (Material & Cupertino)
-
   - New: DropdownMenuFormField (M3 Dropdown in forms).
   - Scrollable NavigationRail; NavigationDrawer supports header/footer.
   - New CupertinoExpansionTile; many Cupertino widgets use RSuperellipse.
@@ -138,23 +136,19 @@ This app follows an MVVM architecture with the following components:
   - Sliver paint-order control (z-order) for advanced overlapping/sticky effects.
 
 - Navigation & Forms
-
   - fullscreenDialog property added to ModalRoute and showDialog.
   - FormField: new onReset callback.
   - Form cannot be used directly as a sliver — wrap in SliverToBoxAdapter.
 
 - Input & Gestures
-
   - PositionedGestureDetails interface to unify pointer gesture details.
   - iOS single-line TextField: no longer user-scrollable.
   - Android: Home/End key support.
 
 - Multi-window
-
   - Foundational create/update window logic landed for Windows/macOS (more platform work incoming).
 
 - Breaking changes & deprecations (actionable)
-
   - Component theme normalization: many component themes refactored to new …ThemeData classes.
   - SemanticsConfiguration/SemanticsNode: elevation and thickness removed.
   - DropdownButtonFormField: value renamed to initialValue.
@@ -163,7 +157,6 @@ This app follows an MVVM architecture with the following components:
   - pluginClass: none in plugin pubspec.yaml deprecated — remove if present.
 
 - Build/tooling minimums (must-haves)
-
   - Minimum Android SDK (flutter.minSdkVersion): API 24.
   - Gradle >= 8.7.0; Android Gradle Plugin (AGP) >= 8.6.0; Java 17.
 

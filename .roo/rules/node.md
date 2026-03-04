@@ -4,7 +4,7 @@ Use the following preferences when working in a node project
 
 - Typescript with strict types
   - If working with json, create a type for it. DO NOT let `any` into the ecosystem if it can be avoided.
-- pnpm 10.30.1 - DO NOT use npm or yarn
+- pnpm 10.30.3 - DO NOT use npm or yarn
   - Run pnpm exec <command> instead of npx
 - Nodemon for local dev
 - For running typescript files, use tsx with a typecheck (like the following)
@@ -36,7 +36,8 @@ Use the following preferences when working in a node project
 - Node 24.0.0
   - Use `.js` in the import paths
 - ES Modules (not commonjs - unless required by a core dependency)
-- Prisma 6.8.2 (https://www.prisma.io/blog/prisma-orm-6-6-0-esm-support-d1-migrations-and-prisma-mcp-server)
+- Prisma 7.4.2 (https://www.prisma.io/blog/prisma-orm-6-6-0-esm-support-d1-migrations-and-prisma-mcp-server)
+
   ```
   // prisma/schema.prisma
   generator client {
@@ -45,8 +46,11 @@ Use the following preferences when working in a node project
   moduleFormat = "esm" // or `"cjs"` for CommonJS
   }
   ```
+
   - AND
   - Usage in files: `import { PrismaClient } from './generated/prisma/client'`
+
 - Favor using the latest ES and nodejs features
 - Pino for logging with wrapping “Logger” class we define (don’t use console.log directly)
 - Always use relative imports so they work correctly when tsc puts them in dist
+- If building a REST api, use fastify and document all endpoints with OpenAPI (and have docs generated off of those)

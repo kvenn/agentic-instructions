@@ -2,9 +2,9 @@
 
 Use the following rules for any code project
 
-- Keep files small and mostly single purpose. 
-  - If a file gets over 500 lines, it should be broken up. 
-  - Leverage folders to keep these files organized (and scopes minimal, as necessary). 
+- Keep files small and mostly single purpose.
+  - If a file gets over 500 lines, it should be broken up.
+  - Leverage folders to keep these files organized (and scopes minimal, as necessary).
   - Try not to have them be tightly coupled (with clear dependency flow)
 - Use early return instead of nested ifs
 - Prefer using dependencies instead of building a solution yourself
@@ -32,3 +32,8 @@ Use the following rules for any code project
 - Use the latest and most modern functionality of the language or framework
   - If you see an API you'd like to use below but do not know how, use context7 mcp to look up the documentation
 - Use `mise` for dependencies. The `mise.toml` (formerly `.tool-versions`) file in the root defines the version. Create it and update it as necessary.
+  - Only pin to minor versions so we don't install a bunch of variations of the same dependency
+- **Static util classes** (e.g. `Logger`) only if they don't have state. Use singletons if there is state.
+- **Minimize services that use repos** so services could be reused across projects
+- **Minimize scope** and keep as many things private as you can
+- If a file is over 500 lines, it should be broken into smaller files/components. Abstract it out cleanly.
