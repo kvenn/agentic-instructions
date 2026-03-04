@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cargo clippy:*)",
+      "Bash(cargo fmt:*)",
+      "Bash(dart analyze:*)",
+      "Bash(dart format:*)",
+      "Bash(flutter analyze:*)",
+      "Bash(flutter build:*)",
+      "Bash(flutter pub get:*)",
+      "Bash(flutter test:*)",
+      "Bash(go fmt:*)",
+      "Bash(go vet:*)",
+      "Bash(just analyze:*)",
+      "Bash(just check:*)",
+      "Bash(just format:*)",
+      "Bash(just lint:*)",
+      "Bash(just typecheck:*)",
+      "Bash(pnpm exec eslint:*)",
+      "Bash(pnpm exec prettier:*)",
+      "Bash(pnpm exec tsc:*)",
+      "Bash(pnpm format:*)",
+      "Bash(pnpm lint:*)",
+      "Bash(pnpm run format:*)",
+      "Bash(pnpm run lint:*)",
+      "Bash(pnpm run typecheck:*)",
+      "Bash(pnpm typecheck:*)",
+      "Bash(uv run mypy:*)",
+      "Bash(uv run pytest:*)",
+      "Bash(uv run ruff check:*)",
+      "Bash(uv run ruff format:*)"
+    ],
+    "deny": []
+  }
+}

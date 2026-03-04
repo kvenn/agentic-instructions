@@ -1,0 +1,338 @@
+# Generated from config/command-prefixes/core.json by scripts/generate-command-prefixes.py
+# Do not edit directly.
+
+[[rules]]
+id = "dart_format"
+description = "Allow Dart formatter commands"
+priority = 1
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^dart\\s+format(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "dart_analyze"
+description = "Allow Dart analyzer commands"
+priority = 2
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^dart\\s+analyze(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "flutter_analyze"
+description = "Allow Flutter analyzer commands"
+priority = 3
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^flutter\\s+analyze(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "flutter_build"
+description = "Allow Flutter build commands"
+priority = 4
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^flutter\\s+build(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "flutter_pub_get"
+description = "Allow Flutter dependency install commands"
+priority = 5
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^flutter\\s+pub\\s+get(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "flutter_test"
+description = "Allow Flutter test commands"
+priority = 6
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^flutter\\s+test(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "pnpm_lint"
+description = "Allow pnpm lint script"
+priority = 7
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^pnpm\\s+lint(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "pnpm_run_lint"
+description = "Allow pnpm run lint script"
+priority = 8
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^pnpm\\s+run\\s+lint(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "pnpm_format"
+description = "Allow pnpm format script"
+priority = 9
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^pnpm\\s+format(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "pnpm_run_format"
+description = "Allow pnpm run format script"
+priority = 10
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^pnpm\\s+run\\s+format(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "pnpm_typecheck"
+description = "Allow pnpm typecheck script"
+priority = 11
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^pnpm\\s+typecheck(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "pnpm_run_typecheck"
+description = "Allow pnpm run typecheck script"
+priority = 12
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^pnpm\\s+run\\s+typecheck(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "pnpm_exec_eslint"
+description = "Allow pnpm exec eslint commands"
+priority = 13
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^pnpm\\s+exec\\s+eslint(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "pnpm_exec_prettier"
+description = "Allow pnpm exec prettier commands"
+priority = 14
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^pnpm\\s+exec\\s+prettier(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "pnpm_exec_tsc"
+description = "Allow pnpm exec TypeScript compiler commands"
+priority = 15
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^pnpm\\s+exec\\s+tsc(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "uv_run_ruff_check"
+description = "Allow uv-run Ruff lint commands"
+priority = 16
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^uv\\s+run\\s+ruff\\s+check(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "uv_run_ruff_format"
+description = "Allow uv-run Ruff format commands"
+priority = 17
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^uv\\s+run\\s+ruff\\s+format(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "uv_run_mypy"
+description = "Allow uv-run mypy typecheck commands"
+priority = 18
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^uv\\s+run\\s+mypy(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "uv_run_pytest"
+description = "Allow uv-run pytest commands"
+priority = 19
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^uv\\s+run\\s+pytest(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "go_fmt"
+description = "Allow go fmt commands"
+priority = 20
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^go\\s+fmt(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "go_vet"
+description = "Allow go vet commands"
+priority = 21
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^go\\s+vet(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "cargo_fmt"
+description = "Allow cargo fmt commands"
+priority = 22
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^cargo\\s+fmt(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "cargo_clippy"
+description = "Allow cargo clippy commands"
+priority = 23
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^cargo\\s+clippy(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "just_lint"
+description = "Allow just lint commands"
+priority = 24
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^just\\s+lint(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "just_format"
+description = "Allow just format commands"
+priority = 25
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^just\\s+format(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "just_analyze"
+description = "Allow just analyze commands"
+priority = 26
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^just\\s+analyze(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "just_typecheck"
+description = "Allow just typecheck commands"
+priority = 27
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^just\\s+typecheck(?:\\s|$)"
+
+[rules.action]
+type = "allow"
+
+[[rules]]
+id = "just_check"
+description = "Allow just check commands"
+priority = 28
+
+[rules.condition]
+tool = "run_shell_command"
+args_pattern = "^just\\s+check(?:\\s|$)"
+
+[rules.action]
+type = "allow"

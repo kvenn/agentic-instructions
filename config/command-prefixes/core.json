@@ -1,0 +1,174 @@
+{
+  "version": 1,
+  "description": "Source of truth for command-prefix allowlists across agent tools.",
+  "rules": [
+    {
+      "id": "dart_format",
+      "description": "Allow Dart formatter commands",
+      "pattern": ["dart", "format"],
+      "decision": "allow"
+    },
+    {
+      "id": "dart_analyze",
+      "description": "Allow Dart analyzer commands",
+      "pattern": ["dart", "analyze"],
+      "decision": "allow"
+    },
+    {
+      "id": "flutter_analyze",
+      "description": "Allow Flutter analyzer commands",
+      "pattern": ["flutter", "analyze"],
+      "decision": "allow"
+    },
+    {
+      "id": "flutter_build",
+      "description": "Allow Flutter build commands",
+      "pattern": ["flutter", "build"],
+      "decision": "allow"
+    },
+    {
+      "id": "flutter_pub_get",
+      "description": "Allow Flutter dependency install commands",
+      "pattern": ["flutter", "pub", "get"],
+      "decision": "allow"
+    },
+    {
+      "id": "flutter_test",
+      "description": "Allow Flutter test commands",
+      "pattern": ["flutter", "test"],
+      "decision": "allow"
+    },
+    {
+      "id": "pnpm_lint",
+      "description": "Allow pnpm lint script",
+      "pattern": ["pnpm", "lint"],
+      "decision": "allow"
+    },
+    {
+      "id": "pnpm_run_lint",
+      "description": "Allow pnpm run lint script",
+      "pattern": ["pnpm", "run", "lint"],
+      "decision": "allow"
+    },
+    {
+      "id": "pnpm_format",
+      "description": "Allow pnpm format script",
+      "pattern": ["pnpm", "format"],
+      "decision": "allow"
+    },
+    {
+      "id": "pnpm_run_format",
+      "description": "Allow pnpm run format script",
+      "pattern": ["pnpm", "run", "format"],
+      "decision": "allow"
+    },
+    {
+      "id": "pnpm_typecheck",
+      "description": "Allow pnpm typecheck script",
+      "pattern": ["pnpm", "typecheck"],
+      "decision": "allow"
+    },
+    {
+      "id": "pnpm_run_typecheck",
+      "description": "Allow pnpm run typecheck script",
+      "pattern": ["pnpm", "run", "typecheck"],
+      "decision": "allow"
+    },
+    {
+      "id": "pnpm_exec_eslint",
+      "description": "Allow pnpm exec eslint commands",
+      "pattern": ["pnpm", "exec", "eslint"],
+      "decision": "allow"
+    },
+    {
+      "id": "pnpm_exec_prettier",
+      "description": "Allow pnpm exec prettier commands",
+      "pattern": ["pnpm", "exec", "prettier"],
+      "decision": "allow"
+    },
+    {
+      "id": "pnpm_exec_tsc",
+      "description": "Allow pnpm exec TypeScript compiler commands",
+      "pattern": ["pnpm", "exec", "tsc"],
+      "decision": "allow"
+    },
+    {
+      "id": "uv_run_ruff_check",
+      "description": "Allow uv-run Ruff lint commands",
+      "pattern": ["uv", "run", "ruff", "check"],
+      "decision": "allow"
+    },
+    {
+      "id": "uv_run_ruff_format",
+      "description": "Allow uv-run Ruff format commands",
+      "pattern": ["uv", "run", "ruff", "format"],
+      "decision": "allow"
+    },
+    {
+      "id": "uv_run_mypy",
+      "description": "Allow uv-run mypy typecheck commands",
+      "pattern": ["uv", "run", "mypy"],
+      "decision": "allow"
+    },
+    {
+      "id": "uv_run_pytest",
+      "description": "Allow uv-run pytest commands",
+      "pattern": ["uv", "run", "pytest"],
+      "decision": "allow"
+    },
+    {
+      "id": "go_fmt",
+      "description": "Allow go fmt commands",
+      "pattern": ["go", "fmt"],
+      "decision": "allow"
+    },
+    {
+      "id": "go_vet",
+      "description": "Allow go vet commands",
+      "pattern": ["go", "vet"],
+      "decision": "allow"
+    },
+    {
+      "id": "cargo_fmt",
+      "description": "Allow cargo fmt commands",
+      "pattern": ["cargo", "fmt"],
+      "decision": "allow"
+    },
+    {
+      "id": "cargo_clippy",
+      "description": "Allow cargo clippy commands",
+      "pattern": ["cargo", "clippy"],
+      "decision": "allow"
+    },
+    {
+      "id": "just_lint",
+      "description": "Allow just lint commands",
+      "pattern": ["just", "lint"],
+      "decision": "allow"
+    },
+    {
+      "id": "just_format",
+      "description": "Allow just format commands",
+      "pattern": ["just", "format"],
+      "decision": "allow"
+    },
+    {
+      "id": "just_analyze",
+      "description": "Allow just analyze commands",
+      "pattern": ["just", "analyze"],
+      "decision": "allow"
+    },
+    {
+      "id": "just_typecheck",
+      "description": "Allow just typecheck commands",
+      "pattern": ["just", "typecheck"],
+      "decision": "allow"
+    },
+    {
+      "id": "just_check",
+      "description": "Allow just check commands",
+      "pattern": ["just", "check"],
+      "decision": "allow"
+    }
+  ]
+}

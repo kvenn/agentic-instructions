@@ -21,6 +21,9 @@ Provide a single command (`ai-bootstrap`) that can be run from any project direc
 - `--dry-run`: preview what would be applied.
 - `--list-profiles`: print discovered profile names and exit.
 - `--source <path>`: read templates from a different instructions repo path.
+- Before applying files, bootstrap prepares generated command-prefix allowlist outputs when `config/command-prefixes/core.json` is present.
+  - Normal mode runs generation.
+  - Dry run mode runs allowlist drift-check only (`--check`).
 
 ## Files
 

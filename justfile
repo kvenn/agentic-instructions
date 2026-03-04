@@ -27,6 +27,16 @@ bootstrap-copy *args:
 bootstrap-list-profiles:
     ./ai-bootstrap --list-profiles
 
+# Generate command-prefix allowlists from the core config for all supported agents.
+# Params: none.
+allowlist-generate:
+    python3 scripts/generate-command-prefixes.py
+
+# Verify generated command-prefix allowlists match the core config.
+# Params: none.
+allowlist-check:
+    python3 scripts/generate-command-prefixes.py --check
+
 # Symlink ai-bootstrap into ~/.local/bin so it can be called from anywhere.
 install-bootstrap:
     mkdir -p "$HOME/.local/bin"

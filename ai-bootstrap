@@ -10,9 +10,13 @@ readonly RULE_CRITICAL_FILE="AA-CRITICAL-INSTRUCTION.md"
 
 declare -a BASE_PATHS=(
   "AGENTS.md"
+  ".claude/settings.json"
+  ".codex/rules/default.rules"
   ".gemini/styleguide.md"
+  ".gemini/policies/command-prefixes.toml"
   "$RULES_DIR_RELATIVE/$RULE_CRITICAL_FILE"
   "$RULES_DIR_RELATIVE/$PROFILE_GENERAL.md"
+  ".vscode/settings.json"
 )
 
 declare -a PROFILE_ARGS=()
@@ -88,6 +92,32 @@ join_by() {
   done
 
   printf '%s' "$output"
+}
+
+prepare_generated_allowlists() {
+  local core_config_path="$TEMPLATE_ROOT/config/command-prefixes/core.json"
+  local generator_path="$TEMPLATE_ROOT/scripts/generate-command-prefixes.py"
+
+  if [[ ! -f "$core_config_path" ]]; then
+    return
+  fi
+
+  if [[ ! -f "$generator_path" ]]; then
+    error_exit "Missing generator script: $generator_path"
+  fi
+
+  local mode_description="generate"
+  local -a generator_args=("$generator_path")
+  if [[ "$DRY_RUN" -eq 1 ]]; then
+    mode_description="check"
+    generator_args+=("--check")
+  fi
+
+  log_line "command-prefix allowlists: $mode_description"
+  if ! python3 "${generator_args[@]}"; then
+    error_exit "Failed to prepare generated command-prefix allowlists."
+  fi
+  log_line ""
 }
 
 # Resolve the directory of this script even when executed through a symlink.
@@ -374,6 +404,8 @@ main() {
   if [[ ! -f "$TEMPLATE_ROOT/AGENTS.md" ]]; then
     error_exit "Template root does not look correct: $TEMPLATE_ROOT"
   fi
+
+  prepare_generated_allowlists
 
   discover_available_profiles
 

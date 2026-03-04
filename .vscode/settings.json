@@ -1,0 +1,33 @@
+{
+  "roo-cline.allowedCommands": [
+    "cargo clippy",
+    "cargo fmt",
+    "dart analyze",
+    "dart format",
+    "flutter analyze",
+    "flutter build",
+    "flutter pub get",
+    "flutter test",
+    "go fmt",
+    "go vet",
+    "just analyze",
+    "just check",
+    "just format",
+    "just lint",
+    "just typecheck",
+    "pnpm exec eslint",
+    "pnpm exec prettier",
+    "pnpm exec tsc",
+    "pnpm format",
+    "pnpm lint",
+    "pnpm run format",
+    "pnpm run lint",
+    "pnpm run typecheck",
+    "pnpm typecheck",
+    "uv run mypy",
+    "uv run pytest",
+    "uv run ruff check",
+    "uv run ruff format"
+  ],
+  "roo-cline.deniedCommands": []
+}
